@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAT Executor UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button.start { background-color: #4CAF50; color: white; }
+        button.stop { background-color: #f44336; color: white; }
+        button.status { background-color: #008CBA; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>RAT Executor UI</h1>
+    <button class="start" onclick="startExecutor()">Start</button>
+    <button class="stop" onclick="stopExecutor()">Stop</button>
+    <button class="status" onclick="checkStatus()">Check Status</button>
+
+    <div id="output" style="margin-top: 20px;"></div>
+</div>
+
+<script>
+    function startExecutor() {
+        document.getElementById('output').innerHTML = 'Executor started...';
+        // Add your start executor logic here
+    }
+
+    function stopExecutor() {
+        document.getElementById('output').innerHTML = 'Executor stopped.';
+        // Add your stop executor logic here
+    }
+
+    function checkStatus() {
+        document.getElementById('output').innerHTML = 'Checking status...';
+        // Add your status check logic here
+    }
+</script>
+
+</body>
+</html>
