@@ -6,57 +6,103 @@
     <title>RAT Executor UI</title>
     <style>
         body {
+            background-color: #1c1c1c;
+            color: #ffffff;
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .sidebar {
+            width: 200px;
+            background-color: #2c2c2c;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .sidebar h2 {
+            color: #00ff00;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 10px;
+        }
+        .tab {
+            display: none;
+        }
+        .tab.active {
+            display: block;
         }
         button {
-            padding: 10px 15px;
-            margin: 5px;
+            background-color: #00ff00;
             border: none;
-            border-radius: 5px;
+            color: black;
+            padding: 10px 15px;
             cursor: pointer;
         }
-        button.start { background-color: #4CAF50; color: white; }
-        button.stop { background-color: #f44336; color: white; }
-        button.status { background-color: #008CBA; color: white; }
+        textarea {
+            width: 100%;
+            height: 200px;
+            background-color: #1c1c1c;
+            color: #ffffff;
+            border: 1px solid #00ff00;
+        }
     </style>
 </head>
 <body>
+    <div class="sidebar">
+        <h2>RAT Executor</h2>
+        <button onclick="showTab('executor')">Script Executor</button>
+        <button onclick="showTab('library')">Script Library</button>
+    </div>
+    <div class="content">
+        <div id="executor" class="tab active">
+            <h3>Script Executor</h3>
+            <textarea id="scriptEditor"></textarea>
+            <button onclick="executeScript()">Execute</button>
+        </div>
+        <div id="library" class="tab">
+            <h3>Script Library</h3>
+            <ul id="scriptList">
+                <!-- Script items will be generated here -->
+            </ul>
+            <button onclick="loadScript()">Load Selected Script</button>
+        </div>
+        <div id="consoleOutput">
+            <h3>Console Output</h3>
+            <pre id="outputArea"></pre>
+        </div>
+    </div>
+    <button onclick="clearScript()">Clear Script</button>
+    <button onclick="saveScript()">Save Script</button>
 
-<div class="container">
-    <h1>RAT Executor UI</h1>
-    <button class="start" onclick="startExecutor()">Start</button>
-    <button class="stop" onclick="stopExecutor()">Stop</button>
-    <button class="status" onclick="checkStatus()">Check Status</button>
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+        }
 
-    <div id="output" style="margin-top: 20px;"></div>
-</div>
+        function executeScript() {
+            const script = document.getElementById('scriptEditor').value;
+            // Execute script logic here
+            document.getElementById('outputArea').textContent += '\nExecuting: ' + script;
+        }
 
-<script>
-    function startExecutor() {
-        document.getElementById('output').innerHTML = 'Executor started...';
-        // Add your start executor logic here
-    }
+        function loadScript() {
+            // Logic to load a script from the library
+            document.getElementById('outputArea').textContent += '\nLoaded script from library.';
+        }
 
-    function stopExecutor() {
-        document.getElementById('output').innerHTML = 'Executor stopped.';
-        // Add your stop executor logic here
-    }
+        function clearScript() {
+            document.getElementById('scriptEditor').value = '';
+            document.getElementById('outputArea').textContent = '';
+        }
 
-    function checkStatus() {
-        document.getElementById('output').innerHTML = 'Checking status...';
-        // Add your status check logic here
-    }
-</script>
-
+        function saveScript() {
+            const script = document.getElementById('scriptEditor').value;
+            // Logic to save the script
+            document.getElementById('outputArea').textContent += '\nSaved script.';
+        }
+    </script>
 </body>
 </html>
