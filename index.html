@@ -6,103 +6,116 @@
     <title>RAT Executor UI</title>
     <style>
         body {
-            background-color: #1c1c1c;
-            color: #ffffff;
+            background-color: #1e1e1e;
+            color: #FFFFFF;
             font-family: Arial, sans-serif;
         }
         .sidebar {
-            width: 200px;
-            background-color: #2c2c2c;
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #2a2a2a;
             padding: 10px;
-            display: inline-block;
-            vertical-align: top;
         }
-        .sidebar h2 {
-            color: #00ff00;
+        .sidebar a {
+            color: #00FF00;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
         }
         .content {
-            margin-left: 220px;
-            padding: 10px;
+            margin-left: 270px;
+            padding: 20px;
         }
         .tab {
             display: none;
         }
-        .tab.active {
-            display: block;
-        }
-        button {
-            background-color: #00ff00;
+        .tab-button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #333;
+            color: #00FF00;
             border: none;
-            color: black;
-            padding: 10px 15px;
             cursor: pointer;
+        }
+        .output {
+            background-color: #000;
+            color: #00FF00;
+            height: 200px;
+            width: 100%;
+            overflow: auto;
+            padding: 10px;
         }
         textarea {
             width: 100%;
-            height: 200px;
-            background-color: #1c1c1c;
-            color: #ffffff;
-            border: 1px solid #00ff00;
+            height: 100px;
+            background-color: #2e2e2e;
+            color: #FFFFFF;
+            border: 1px solid #00FF00;
+        }
+        button {
+            background-color: #333;
+            color: #00FF00;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <h2>RAT Executor</h2>
-        <button onclick="showTab('executor')">Script Executor</button>
-        <button onclick="showTab('library')">Script Library</button>
+        <a href="#" onclick="showTab('executor')">Script Executor</a>
+        <a href="#" onclick="showTab('library')">Script Library</a>
     </div>
     <div class="content">
-        <div id="executor" class="tab active">
-            <h3>Script Executor</h3>
-            <textarea id="scriptEditor"></textarea>
+        <div id="executor" class="tab">
+            <h2>Script Executor</h2>
+            <textarea id="code"></textarea>
             <button onclick="executeScript()">Execute</button>
+            <div class="output" id="output"></div>
         </div>
         <div id="library" class="tab">
-            <h3>Script Library</h3>
-            <ul id="scriptList">
-                <!-- Script items will be generated here -->
-            </ul>
-            <button onclick="loadScript()">Load Selected Script</button>
-        </div>
-        <div id="consoleOutput">
-            <h3>Console Output</h3>
-            <pre id="outputArea"></pre>
+            <h2>Script Library</h2>
+            <div>
+                <div>Auto Farm <button onclick="loadScript('auto_farm')">Load</button></div>
+                <div>ESP Player <button onclick="loadScript('esp_player')">Load</button></div>
+                <div>Speed Hack <button onclick="loadScript('speed_hack')">Load</button></div>
+                <div>Infinite Jump <button onclick="loadScript('infinite_jump')">Load</button></div>
+                <div>Teleport <button onclick="loadScript('teleport')">Load</button></div>
+            </div>
         </div>
     </div>
-    <button onclick="clearScript()">Clear Script</button>
-    <button onclick="saveScript()">Save Script</button>
-
     <script>
-        function showTab(tabName) {
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
+        function showTab(tab) {
+            var tabs = document.querySelectorAll('.tab');
+            tabs.forEach(function(t) {
+                t.style.display = 'none';
             });
-            document.getElementById(tabName).classList.add('active');
+            document.getElementById(tab).style.display = 'block';
         }
 
         function executeScript() {
-            const script = document.getElementById('scriptEditor').value;
-            // Execute script logic here
-            document.getElementById('outputArea').textContent += '\nExecuting: ' + script;
+            var code = document.getElementById('code').value;
+            document.getElementById('output').innerText = 'Executing script...\n' + code;
+            // Logic to execute the script goes here
         }
 
-        function loadScript() {
-            // Logic to load a script from the library
-            document.getElementById('outputArea').textContent += '\nLoaded script from library.';
+        function loadScript(scriptName) {
+            var scripts = {
+                'auto_farm': 'console.log("Auto Farm script loaded");',
+                'esp_player': 'console.log("ESP Player script loaded");',
+                'speed_hack': 'console.log("Speed Hack script loaded");',
+                'infinite_jump': 'console.log("Infinite Jump script loaded");',
+                'teleport': 'console.log("Teleport script loaded");'
+            };
+            document.getElementById('code').value = scripts[scriptName];
         }
 
-        function clearScript() {
-            document.getElementById('scriptEditor').value = '';
-            document.getElementById('outputArea').textContent = '';
-        }
-
-        function saveScript() {
-            const script = document.getElementById('scriptEditor').value;
-            // Logic to save the script
-            document.getElementById('outputArea').textContent += '\nSaved script.';
-        }
+        // Initialize with the Script Executor tab
+        showTab('executor');
     </script>
 </body>
 </html>
