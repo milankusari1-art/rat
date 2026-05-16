@@ -73,13 +73,23 @@ check_node() {
     if ! command -v node &> /dev/null; then
         print_warning "Node.js not found. Installing..."
         
-        # Install Node.js using Homebrew if available
-        if command -v brew &> /dev/null; then
-            brew install node
-        else
-            print_error "Please install Node.js from https://nodejs.org/ or install Homebrew first"
-            exit 1
+        # Install Homebrew if needed
+        if ! command -v brew &> /dev/null; then
+            print_status "Installing Homebrew (required for Node.js)..."
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
+                print_error "Failed to install Homebrew"
+                print_warning "Please visit https://brew.sh to install manually"
+                exit 1
+            }
         fi
+        
+        # Install Node.js via Homebrew
+        print_status "Installing Node.js via Homebrew..."
+        brew install node || {
+            print_error "Failed to install Node.js"
+            print_warning "Please visit https://nodejs.org to install manually"
+            exit 1
+        }
     fi
     
     NODE_VERSION=$(node -v)
