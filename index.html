@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rat UI - macOS Installer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #001a00 0%, #002200 100%);
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            background: rgba(0, 40, 0, 0.6);
+            border: 2px solid #00cc00;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+            text-align: center;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .logo {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            color: #00cc00;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        .command {
+            background: rgba(0, 20, 0, 0.8);
+            border: 1px solid #00cc00;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 30px 0;
+            font-size: 14px;
+            overflow-x: auto;
+            user-select: all;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00cc00 0%, #99ff99 100%);
+            color: #001a00;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+        .info {
+            margin-top: 40px;
+            border-top: 1px solid #00cc00;
+            padding-top: 20px;
+            text-align: left;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        .info h3 {
+            color: #00ff00;
+            margin-bottom: 10px;
+        }
+        .feature {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        a {
+            color: #00ff00;
+            text-decoration: underline;
+        }
+        a:hover {
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🐀</div>
+        <h1>RAT UI</h1>
+        <p class="subtitle">Opiumware Command Executor</p>
+        
+        <p style="margin-bottom: 20px;">One-line installation for macOS Intel</p>
+        
+        <div class="command">curl -fsSL "https://milankusari1-art.github.io/rat/install.sh" | bash</div>
+        
+        <button class="button" onclick="copyCommand()">📋 Copy Command</button>
+        <a href="install.sh" class="button">📥 Download Installer</a>
+        
+        <div class="info">
+            <h3>✨ What's Included:</h3>
+            <div class="feature">✓ Automatic macOS Intel detection</div>
+            <div class="feature">✓ Dependency installation (Git, Node.js)</div>
+            <div class="feature">✓ App bundle creation</div>
+            <div class="feature">✓ Finder shortcuts</div>
+            <div class="feature">✓ Command-line integration</div>
+            
+            <h3 style="margin-top: 20px;">📚 Documentation:</h3>
+            <div class="feature"><a href="INSTALL_MAC.md">Installation Guide</a></div>
+            <div class="feature"><a href="https://github.com/milankusari1-art/rat">View on GitHub</a></div>
+            
+            <h3 style="margin-top: 20px;">🔧 Files:</h3>
+            <div class="feature">• <a href="install.sh">install.sh</a> - Main installer</div>
+            <div class="feature">• <a href="verify-install.sh">verify-install.sh</a> - Verification</div>
+            <div class="feature">• <a href="uninstall.sh">uninstall.sh</a> - Uninstaller</div>
+        </div>
+    </div>
+    
+    <script>
+        function copyCommand() {
+            const cmd = 'curl -fsSL "https://milankusari1-art.github.io/rat/install.sh" | bash';
+            navigator.clipboard.writeText(cmd).then(() => {
+                alert('✅ Command copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
