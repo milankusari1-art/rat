@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Green gradient background -->
+  <defs>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00cc00;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark background -->
+  <rect width="256" height="256" fill="#001a00"/>
+  
+  <!-- Glow circle -->
+  <circle cx="128" cy="128" r="120" fill="url(#greenGrad)" opacity="0.2" filter="url(#glow)"/>
+
+  <!-- Rat body -->
+  <ellipse cx="128" cy="140" rx="50" ry="60" fill="url(#greenGrad)" stroke="#00ff00" stroke-width="2"/>
+
+  <!-- Rat head -->
+  <circle cx="128" cy="70" r="45" fill="url(#greenGrad)" stroke="#00ff00" stroke-width="2"/>
+
+  <!-- Ears -->
+  <ellipse cx="100" cy="35" rx="18" ry="28" fill="url(#greenGrad)" stroke="#00ff00" stroke-width="2"/>
+  <ellipse cx="156" cy="35" rx="18" ry="28" fill="url(#greenGrad)" stroke="#00ff00" stroke-width="2"/>
+  <ellipse cx="100" cy="40" rx="10" ry="18" fill="#004d00"/>
+  <ellipse cx="156" cy="40" rx="10" ry="18" fill="#004d00"/>
+
+  <!-- Eyes -->
+  <circle cx="115" cy="60" r="6" fill="#001a00"/>
+  <circle cx="141" cy="60" r="6" fill="#001a00"/>
+  <circle cx="116" cy="59" r="2" fill="#00ff00"/>
+  <circle cx="142" cy="59" r="2" fill="#00ff00"/>
+
+  <!-- Nose -->
+  <circle cx="128" cy="75" r="5" fill="#00ff00"/>
+
+  <!-- Mouth -->
+  <path d="M 128 75 Q 120 85 115 82" stroke="#00ff00" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 128 75 Q 136 85 141 82" stroke="#00ff00" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Whiskers -->
+  <line x1="90" y1="68" x2="70" y2="65" stroke="#00ff00" stroke-width="1.5" opacity="0.8"/>
+  <line x1="90" y1="75" x2="70" y2="78" stroke="#00ff00" stroke-width="1.5" opacity="0.8"/>
+  <line x1="166" y1="68" x2="186" y2="65" stroke="#00ff00" stroke-width="1.5" opacity="0.8"/>
+  <line x1="166" y1="75" x2="186" y2="78" stroke="#00ff00" stroke-width="1.5" opacity="0.8"/>
+
+  <!-- Front paws -->
+  <ellipse cx="105" cy="195" rx="15" ry="25" fill="url(#greenGrad)" stroke="#00ff00" stroke-width="2"/>
+  <ellipse cx="151" cy="195" rx="15" ry="25" fill="url(#greenGrad)" stroke="#00ff00" stroke-width="2"/>
+
+  <!-- Tail -->
+  <path d="M 165 155 Q 190 140 200 110 Q 205 95 200 80" stroke="url(#greenGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+
+  <!-- Tail segments for detail -->
+  <circle cx="190" cy="140" r="3" fill="#00ff00" opacity="0.6"/>
+  <circle cx="200" cy="115" r="3" fill="#00ff00" opacity="0.6"/>
+  <circle cx="202" cy="90" r="3" fill="#00ff00" opacity="0.6"/>
+
+  <!-- Text label -->
+  <text x="128" y="235" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle" fill="#00ff00" stroke="#00cc00" stroke-width="0.5">RAT</text>
+</svg>

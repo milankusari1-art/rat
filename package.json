@@ -1,0 +1,16 @@
+{
+  "name": "rat-ui",
+  "version": "1.0.0",
+  "description": "Green-themed Rat UI with Opiumware API integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["rat", "ui", "opiumware"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rat UI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🐀</span>
+                <h1>RAT UI</h1>
+            </div>
+            <p class="subtitle">Opiumware Command Executor</p>
+        </header>
+
+        <main class="main-content">
+            <div class="form-container">
+                <form id="executorForm">
+                    <div class="form-group">
+                        <label for="port">Target Port</label>
+                        <select id="port" name="port" required>
+                            <option value="ALL">ALL Ports (8392-8397)</option>
+                            <option value="8392">Port 8392</option>
+                            <option value="8393">Port 8393</option>
+                            <option value="8394">Port 8394</option>
+                            <option value="8395">Port 8395</option>
+                            <option value="8396">Port 8396</option>
+                            <option value="8397">Port 8397</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="code">Script Code</label>
+                        <textarea 
+                            id="code" 
+                            name="code" 
+                            placeholder="Enter your script here... e.g., print('hello')"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Execute</button>
+                </form>
+            </div>
+
+            <div class="results-container">
+                <h2>Execution Results</h2>
+                <div id="results" class="results">
+                    <p class="empty-state">Results will appear here...</p>
+                </div>
+            </div>
+        </main>
+
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="spinner"></div>
+            <p>Executing script...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
